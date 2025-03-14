@@ -21,7 +21,51 @@ const getSingle = async (req, res) => {
 
 };
 
+const createUser = async (req, res) => {
+    const user = {
+        email: req.body.email,
+        username: req.body.userame,
+        name: req.body.name,
+        ipaddress: req.body.ipaddress
+    }
+    const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
+    if (response.acknowledged > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500),json(response.error || 'Some error accured while updating the user.');
+    }
+};
+
+const updateUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const user = {
+        email: req.body.email,
+        username: req.body.userame,
+        name: req.body.name,
+        ipaddress: req.body.ipaddress
+    }
+    const response = await mongodb.getDatabase().db().collection('users').replaceOne({ _id: userId }, user);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500),json(response.error || 'Some error accured while updating the user.');
+    }
+};
+
+const deleteUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('users').deleteOne({ _id: userId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500),json(response.error || 'Some error accured while updating the user.');
+    }
+}
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createUser,
+    updateUser,
+    deleteUser
 };
