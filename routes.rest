@@ -10,10 +10,11 @@ POST http://localhost:3000/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "nick_bean@gameofthron.es",
-    "username": "Nickkko",
-    "name": "Ned StarkOOOO",
-    "ipaddress": "test"
+    "email": "test1@test.com",
+    "birthday": "05-08-1994",
+    "favoriteColor": "Blue",
+    "firstName": "Nico",
+    "lastName": "Uro"
 }
 
 ### Update contact
@@ -21,11 +22,12 @@ PUT http://localhost:3000/users/67d48aacebab7a6fc54f93ad HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "nick_bean@gameofthron.es",
-    "username": "Nickkk",
-    "name": "Ned Stark",
-    "ipaddress": "test"
+    "email": "test1@test.com",
+    "birthday": "05-08-1994",
+    "favoriteColor": "Blue",
+    "firstName": "Nico",
+    "lastName": "Uro"
 }
 
 ### Delete contact
-DELETE  http://localhost:3000/users/67d48aacebab7a6fc54f93ad HTTP/1.1
+DELETE  http://localhost:3000/users/67d6f18ffb35b01afaa82aca HTTP/1.1
